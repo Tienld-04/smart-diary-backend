@@ -1,0 +1,51 @@
+server:
+  port: 8080
+#  servlet:
+#    context-path: /springboot3
+
+cloudinary:
+  cloud-name: "dinvsgjet"
+  api-key: "529488681841853"
+  api-secret: "3MHUPMlnyEK_dU4EIRPp_GUGc5E"
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost:3306/diary_project"
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      #ddl-auto: create-drop
+      ddl-auto: update
+    show-sql: true
+    open-in-view: true
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+gemini:
+  api:
+    key: "AIzaSyDk5wwNlP0HY1Kb57tcw-IKtgVVEng2jbU"
+    url: "https://generativelanguage.googleapis.com/v1beta"
+    endpoints:
+      # Sử dụng model names mới của Gemini
+      text-generation: "${gemini.api.url}/models/gemini-1.5-flash:generateContent"
+      # Gemini 1.5 Flash cũng hỗ trợ vision (text + image)
+      image-generation: "${gemini.api.url}/models/gemini-1.5-flash:generateContent"
+      # Endpoint cho mô hình Gemini-Pro (xử lý text+icon)
+      #text-generation: "${gemini.api.url}/models/gemini-pro:generateContent"
+      # Endpoint cho mô hình Gemini-Pro-Vision (xử lý hình ảnh)
+      #image-generation: "${gemini.api.url}/models/gemini-pro-vision:generateContent"
+
+# Cấu hình cho Google Cloud Services (Speech-to-Text)
+google:
+  cloud:
+    credentials:
+      file: "classpath:GoogleCloud/tienld270-service-e38a0adc562c.json"
+    endpoints:
+      # Endpoint chính xác cho Google Cloud Speech-to-Text API
+      speech-to-text: "https://speech.googleapis.com/v1/speech:recognize"
+      streaming-speech-to-text: "https://speech.googleapis.com/v1/speech:streamingrecognize"
+jwt:
+  signerKey : "8poI/gBkjYUDph3tSwHX7QucdbRz8GtSimfw/08KNP7pR9qFjHHNcvyvXYEK0Thq"
+#  valid-duration : 3600 # in second
+#  refreshable-duration: 3600000 # in seconds
