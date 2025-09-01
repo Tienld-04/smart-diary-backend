@@ -12,6 +12,7 @@ import java.util.List;
 public interface DiaryRepository extends JpaRepository<DiaryEntity,Long> {
     List<DiaryEntity> findByCreatedAtBetween(LocalDateTime fromDate, LocalDateTime toDate);
     List<DiaryEntity> findByUser_UsernameAndCreatedAtBetween(String username,LocalDateTime fromDate, LocalDateTime toDate);
+    List<DiaryEntity> findTop3ByUser_UsernameOrderByCreatedAtDesc(String username);
     List<DiaryEntity> findByUser(UserEntity user);
     List<DiaryEntity> findByUser_Id(Long userId);
     void deleteByIdIn(List<Long> ids);

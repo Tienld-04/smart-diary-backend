@@ -1,6 +1,8 @@
 package com.Tienld.diary_project.controller;
 
 import com.Tienld.diary_project.dto.request.UserCreateRequest;
+import com.Tienld.diary_project.dto.request.password.ChangePasswordRequest;
+import com.Tienld.diary_project.dto.request.password.ResetPasswordRequest;
 import com.Tienld.diary_project.dto.response.UserResponse;
 import com.Tienld.diary_project.service.UserService;
 import jakarta.validation.Valid;
@@ -20,8 +22,18 @@ public class UserController {
         UserResponse userResponse = userService.createUser(userCreateRequest);
         return ResponseEntity.ok(userResponse);
     }
+    @PostMapping("/change-password")
+    public ResponseEntity<String> changePassword(@Valid @RequestBody ChangePasswordRequest changePasswordRequest) {
+        String changePassword = userService.changePassword(changePasswordRequest);
+        return ResponseEntity.ok(changePassword);
+    }
+    @PostMapping("reset-password")
+    public ResponseEntity<String> resetPassword(@Valid @RequestBody ResetPasswordRequest resetPasswordRequest) {
+        String resetPassword = userService.resetPassword(resetPasswordRequest);
+        return ResponseEntity.ok(resetPassword);
+    }
 
-    @GetMapping("/myInfo")
+    @GetMapping("/my-info")
     public ResponseEntity<UserResponse> getUser() {
         UserResponse userResponse = userService.getMyInfo();
         return ResponseEntity.ok(userResponse);

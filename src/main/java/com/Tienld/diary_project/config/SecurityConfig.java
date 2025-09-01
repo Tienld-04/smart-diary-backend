@@ -36,7 +36,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable) // tắt CSRF cho API REST
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/users/register", "/auth/log-in").permitAll() // cho phép không cần login
+                        .requestMatchers("/users/register", "users/reset-password", "/auth/log-in").permitAll()
                         .anyRequest().authenticated() // các API khác phải có token
                 ).oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwt -> jwt

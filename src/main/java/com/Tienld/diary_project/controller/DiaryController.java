@@ -75,7 +75,11 @@ public class DiaryController {
         return ResponseEntity.ok(diary);
     }
 
-
+    @GetMapping("/recent")
+    public ResponseEntity<List<DiaryResponse>> getThreeRecentDiary() {
+        List<DiaryResponse> diaryResponses = diaryService.getRecentDiary();
+        return ResponseEntity.ok(diaryResponses);
+    }
     @GetMapping("/{userId}")
     public ResponseEntity<List<DiaryResponse>> getAllDiariesByUser_Id(@PathVariable Long userId) {
 //        userId = 1L;

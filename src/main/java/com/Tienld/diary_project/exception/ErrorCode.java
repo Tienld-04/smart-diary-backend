@@ -16,6 +16,7 @@ public enum ErrorCode {
     UNAUTHENTICATED(1006, "unauthenticated", HttpStatus.UNAUTHORIZED),
     UNAUTHORIZED(1007, "you to not add permission", HttpStatus.FORBIDDEN),
     INVALID_DOB(1008, "Your age must be at least {min}", HttpStatus.BAD_REQUEST),
+
     ;
     ErrorCode(int code, String message , HttpStatusCode httpStatusCode) {
         this.message = message;

@@ -26,6 +26,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class DiaryService {
@@ -172,7 +173,11 @@ public class DiaryService {
 
         return res;
     }
-
+    public List<DiaryResponse> getRecentDiary(){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        List<DiaryEntity> diaryEntityList = diaryRepository.findTop3ByUser_UsernameOrderByCreatedAtDesc(username);
+        return diaryEntityList.stream().map(diaryConverter::converToDiaryResponse2).collect(Collectors.toList());
+    }
     public List<DiaryResponse> findByUser_Id(Long userId) {
         List<DiaryEntity> diaryEntities = diaryRepository.findByUser_Id(userId);
         List<DiaryResponse> res = new ArrayList<>();
