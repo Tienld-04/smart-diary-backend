@@ -36,7 +36,7 @@ gemini:
       # Endpoint cho mô hình Gemini-Pro-Vision (xử lý hình ảnh)
       #image-generation: "${gemini.api.url}/models/gemini-pro-vision:generateContent"
 
-# Cấu hình cho Google Cloud Services (Speech-to-Text)
+# Google Cloud Services (Speech-to-Text)
 google:
   cloud:
     credentials:
@@ -47,5 +47,5 @@ google:
       streaming-speech-to-text: "https://speech.googleapis.com/v1/speech:streamingrecognize"
 jwt:
   signerKey : "8poI/gBkjYUDph3tSwHX7QucdbRz8GtSimfw/08KNP7pR9qFjHHNcvyvXYEK0Thq"
-#  valid-duration : 3600 # in second
-#  refreshable-duration: 3600000 # in seconds
+  valid-duration : 86400
+  refreshable-duration: 3000000
